@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{973131
 		Helpful methods.txt = Helpful methods.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSPABookStore", "BlazorSPABookStore\BlazorSPABookStore.csproj", "{CFA68C84-8AFB-426C-AA54-9E272B907921}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D167FF34-C625-4BCB-BB4E-9AB09C595160}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D167FF34-C625-4BCB-BB4E-9AB09C595160}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D167FF34-C625-4BCB-BB4E-9AB09C595160}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA68C84-8AFB-426C-AA54-9E272B907921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA68C84-8AFB-426C-AA54-9E272B907921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA68C84-8AFB-426C-AA54-9E272B907921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA68C84-8AFB-426C-AA54-9E272B907921}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

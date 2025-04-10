@@ -1,0 +1,74 @@
+﻿@page "/bookedit"
+@page "/bookedit/{BookId:int}"
+
+
+<section class="book-edit text-center">
+    <h1 class="page-title">@Title</h1>
+
+    @if (Book == null)
+    {
+        <p>Loading...</p>
+    }
+    else
+    {
+        
+        <EditForm Model="@Book" OnValidSubmit="@HandleValidSubmit">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+
+            <div class="form-group row justify-content-center">
+                <label for="title" class="col-form-label col-sm-2">Title: </label>
+                <div class="col-sm-8 col-md-5">
+                    <InputText id="title" class="form-control" @bind-Value="@Book.Name" placeholder="Title"></InputText>
+                    <ValidationMessage For="@(() => Book.Name)"/>
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                <label for="description" class="col-form-label col-sm-2">Description: </label>
+                <div class="col-sm-8 col-md-5">
+                    <InputTextArea id="description" class="form-control" @bind-Value="@Book.Description" placeholder="Description"></InputTextArea>
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                <label for="author" class="col-form-label col-sm-2">Author: </label>
+                <div class="col-sm-8 col-md-5">
+                    <InputText id="author" class="form-control" @bind-Value="@Book.Author" placeholder="Author"></InputText>
+                    <ValidationMessage For="@(() => Book.Author)" />
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                <label for="categoryId" class="col-form-label col-sm-2">Category: </label>
+                <div class="col-sm-8 col-md-5">
+                    <InputSelect id="categoryId" @bind-Value="@Book.CategoryId" class="form-select form-control" placeholder="Category">
+                        <option selected disabled hidden value="0">Select a category</option>
+                        @foreach(var category in CategoryList)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="@(() => Book.CategoryId)"/>
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                <label for="publishDate" class="col-form-label col-sm-2">Publish Date: </label>
+                <div class="col-sm-8 col-md-5">
+                    <InputDate id="publishDate" class="form-control" @bind-Value="@Book.PublishDate" placeholder="Publish date"></InputDate>
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                <label for="value" class="col-form-label col-sm-2">Value: </label>
+                <div class="col-sm-8 col-md-5">
+                    <InputNumber id="value" class="form-control" @bind-Value="@Book.Value" placeholder="Value"></InputNumber>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success mr-2">Save book</button>
+            <button class="btn btn-info" type="submit" @onclick="@NavigateToBooksPage">Back</button>
+
+        </EditForm>
+    }
+</section>

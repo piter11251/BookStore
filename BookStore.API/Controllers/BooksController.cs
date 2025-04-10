@@ -62,7 +62,7 @@ namespace BookStore.API.Controllers
             return Ok(_mapper.Map<BookResultDto>(bookResult));
         }
 
-        [HttpPut]
+        [HttpPut("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Update(int id, BookEditDto bookDto)

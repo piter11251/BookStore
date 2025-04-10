@@ -15,6 +15,16 @@ builder.Services.AddDbContext<BookStoreDbContext>(options =>
 });
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.ResolveDependencies();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("aaa",
+        builder =>
+        {
+            builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
+                .SetIsOriginAllowedToAllowWildcardSubdomains();
+        });
+});
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo()
@@ -26,7 +36,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddControllers();
 
 var app = builder.Build();
-
+app.UseCors("aaa");
 // Configure the HTTP request pipeline.
 app.UseSwagger();
 app.UseSwaggerUI(c =>
@@ -34,6 +44,7 @@ app.UseSwaggerUI(c =>
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
 });
 app.UseHttpsRedirection();
+
 
 app.UseAuthorization();
 
